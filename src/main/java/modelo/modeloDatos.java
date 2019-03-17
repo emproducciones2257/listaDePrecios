@@ -23,6 +23,8 @@ public class modeloDatos {
     
     private String pruebaCambio;
     
+    private String pruebaCambio2;
+    
     
      public modeloDatos (int c, String p, Double d, double preCal) {
        
