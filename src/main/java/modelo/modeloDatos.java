@@ -21,13 +21,6 @@ public class modeloDatos {
     
     private Double precioPorcentaje;
     
-    private String pruebaCambio;
-    
-    private String pruebaCambio2;
-    
-    private String pruebaCambio3;
-    
-    
      public modeloDatos (int c, String p, Double d, double preCal) {
        
          codigo=c;
