@@ -2,6 +2,7 @@ package Controles;
 
 import emproducciones.aver.accionesExcel;
 import emproducciones.aver.accionesPDF;
+import emproducciones.aver.utilidades;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -9,17 +10,11 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelo.modeloRutaArchivos;
 
 
 public class FXMLController implements Initializable {
-    
-                File ruta = new File("C:\\carpeta\\documento.pdf");
-		
-		File ruta2 = new File("C:\\carpeta\\documento.pdf");
-		
-		File ruta3 = new File("C:\\carpeta\\libreria.pdf");
 
     @FXML
     private TextArea texto;
@@ -48,23 +43,26 @@ public class FXMLController implements Initializable {
     
     private File rutaSeleccionadaExcel;
     
+    modeloRutaArchivos rutaPdf = new modeloRutaArchivos();
+    
+    modeloRutaArchivos rutaExcel = new modeloRutaArchivos();
+    
+    utilidades utilidad = new utilidades();
+    
     @FXML
     private void accionBuscar (){
-      
-        JFileChooser selectorArchivo = new JFileChooser();
-        FileNameExtensionFilter filtroExtension = new FileNameExtensionFilter(
-            "Documento PDF", "pdf");
-        selectorArchivo.setFileFilter(filtroExtension);
-        int returnVal = selectorArchivo.showOpenDialog(null);
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
-            rutaSeleccionadaPdf = selectorArchivo.getSelectedFile().getAbsoluteFile();
-            areaNombre.setText(rutaSeleccionadaPdf.getName());
-            btnMostrar.setDisable(false);
-            btnLimpiar.setDisable(false);
-            cosasExcel.setDisable(false);
-            cosasExcel.setDisable(false);
-            areaNombreExcel.setDisable(false);
-            }
+        
+        rutaPdf=utilidad.buscarArchivo(new FileNameExtensionFilter("Documento PDF", "pdf"));
+        
+        rutaSeleccionadaPdf=rutaPdf.getrutaSeleccionada();
+        
+        areaNombre.setText(rutaPdf.getnombreArchivo());    
+        btnMostrar.setDisable(false);
+        btnLimpiar.setDisable(false);
+        cosasExcel.setDisable(false);
+        cosasExcel.setDisable(false);
+        areaNombreExcel.setDisable(false);
+            
         }
     
     @FXML
@@ -85,24 +83,19 @@ public class FXMLController implements Initializable {
     cosasExcel.setDisable(true);
     areaNombreExcel.setDisable(true);
     }
-    
 
     @FXML
     private void accionExcel () throws IOException{
         
-        JFileChooser selectorArchivo = new JFileChooser();
-        FileNameExtensionFilter filtroExtension = new FileNameExtensionFilter(
-            "Documento Excel", ".xlsx");
-        selectorArchivo.setFileFilter(filtroExtension);
-        int returnVal = selectorArchivo.showOpenDialog(null);
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
-            rutaSeleccionadaExcel = selectorArchivo.getSelectedFile().getAbsoluteFile();
-            }
-        areaNombreExcel.setText(rutaSeleccionadaPdf.getName());
+        rutaExcel=utilidad.buscarArchivo(new FileNameExtensionFilter("Documento Excel", "xlsx"));
+        
+        rutaSeleccionadaExcel = rutaExcel.getrutaSeleccionada();
 
-      accionesExcel excel = new accionesExcel();
+        areaNombreExcel.setText(rutaExcel.getnombreArchivo());
+
+        //accionesExcel excel = new accionesExcel();
       
-      excel.leerExcel();
+        //excel.leerExcel();
     }
    
     @Override

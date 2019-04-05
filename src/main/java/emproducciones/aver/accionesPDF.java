@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import javafx.scene.control.TextArea;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.text.PDFTextStripper;
 import modelo.*;
 
@@ -39,10 +36,8 @@ public class accionesPDF {
             } catch (IOException e) {
                     // TODO Auto-generated catch block
 
-            }
-		
+            }	
 	}
-        
         
         public String quitarEncabezado(String t){
             String textoListo="";

@@ -28,8 +28,8 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="177.0">
                <children>
-                  <Button fx:id="cosasExcel" disable="true" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" onAction="#accionExcel" text="Button" />
-                  <TextField fx:id="areaNombreExcel" disable="true" layoutX="79.0" layoutY="14.0" prefHeight="25.0" prefWidth="138.0" />
+                  <Button fx:id="cosasExcel" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" onAction="#accionExcel" text="Button" />
+                  <TextField fx:id="areaNombreExcel" layoutX="79.0" layoutY="14.0" prefHeight="25.0" prefWidth="138.0" />
                   <Label layoutX="9.0" layoutY="18.0" text="Documento" />
                   <ImageView fitHeight="25.0" fitWidth="29.0" layoutX="231.0" layoutY="14.0">
                      <image>
