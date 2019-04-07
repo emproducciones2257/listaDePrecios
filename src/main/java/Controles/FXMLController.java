@@ -55,16 +55,13 @@ public class FXMLController implements Initializable {
         rutaPdf=utilidad.buscarArchivo(new FileNameExtensionFilter("Documento PDF", "pdf"));
 
         if (rutaPdf.getnombreArchivo()!=null){
-            
             rutaSeleccionadaPdf=rutaPdf.getrutaSeleccionada();
-            
             areaNombre.setText(rutaPdf.getnombreArchivo());    
-        btnMostrar.setDisable(false);
-        btnLimpiar.setDisable(false);
-        cosasExcel.setDisable(false);
-        cosasExcel.setDisable(false);
-        areaNombreExcel.setDisable(false);
-            
+            btnMostrar.setDisable(false);
+            btnLimpiar.setDisable(false);
+            cosasExcel.setDisable(false);
+            cosasExcel.setDisable(false);
+            areaNombreExcel.setDisable(false);   
         }
         
        
