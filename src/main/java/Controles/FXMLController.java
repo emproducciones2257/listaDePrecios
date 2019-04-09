@@ -61,12 +61,13 @@ public class FXMLController implements Initializable {
             btnLimpiar.setDisable(false);
             cosasExcel.setDisable(false);
             cosasExcel.setDisable(false);
-            areaNombreExcel.setDisable(false);   
-        }
-        
-       
-            
-        }
+            areaNombreExcel.setDisable(false); 
+            escibirCuadroTexto("Se cargo correctamente el archivo PDF");
+            escibirCuadroTexto(" ");
+            escibirCuadroTexto(" ");
+            escibirCuadroTexto("/////////////////////////////////////");
+        }        
+    }
     
     @FXML
     private void accionMostrar() throws IOException {
@@ -77,7 +78,6 @@ public class FXMLController implements Initializable {
     }
     
     @FXML
-    
     private void accionBorrar (){
     texto.setText("");
     btnMostrar.setDisable(true);
@@ -99,6 +99,12 @@ public class FXMLController implements Initializable {
         //accionesExcel excel = new accionesExcel();
       
         //excel.leerExcel();
+    }
+    
+    public void escibirCuadroTexto (String t) {
+        
+        texto.appendText(t);
+        texto.setWrapText(true);
     }
    
     @Override
