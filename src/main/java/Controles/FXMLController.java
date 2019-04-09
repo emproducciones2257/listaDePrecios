@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelo.modeloObjetoDatos;
 import modelo.modeloRutaArchivos;
 
 
@@ -47,6 +48,8 @@ public class FXMLController implements Initializable {
     
     modeloRutaArchivos rutaExcel = new modeloRutaArchivos();
     
+    modeloObjetoDatos pdfExtraido = new modeloObjetoDatos();
+    
     utilidades utilidad = new utilidades();
     
     @FXML
@@ -71,10 +74,12 @@ public class FXMLController implements Initializable {
     
     @FXML
     private void accionMostrar() throws IOException {
+        
         accionesPDF p = new accionesPDF();
-
-        p.extraerTextoPdf(rutaSeleccionadaPdf, texto, Integer.parseInt(txtPorcentaje.getText()));
-   
+        
+        pdfExtraido.setColeccion(p.extraerTextoPdf(rutaSeleccionadaPdf, texto, Integer.parseInt(txtPorcentaje.getText())));
+        
+        p.recorrerColeccion(pdfExtraido);
     }
     
     @FXML

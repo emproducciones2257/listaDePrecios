@@ -25,6 +25,9 @@ public class modeloObjetoDatos {
         return registro;
     }
     
-    
+    public void setColeccion (ArrayList<modeloDatos> coleccion) {
+        
+        registro=coleccion;
+    }
     
 }

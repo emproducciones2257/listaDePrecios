@@ -1,6 +1,7 @@
 package emproducciones.aver;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.scene.control.TextArea;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -9,9 +10,10 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import modelo.*;
 
 public class accionesPDF {
+    modeloObjetoDatos pdfExtraido = new modeloObjetoDatos();
 	
-    public void extraerTextoPdf (File ruta, TextArea area, int p) {
-            	
+    public ArrayList<modeloDatos> extraerTextoPdf (File ruta, TextArea area, int p) {
+   	
 	try {
             //cargo el documento
             PDDocument documento = PDDocument.load(ruta);
@@ -28,7 +30,7 @@ public class accionesPDF {
 			
             area.appendText(temp);
                         
-            pruebaDelimitador(temp,p);     
+            pruebaDelimitador(temp,p); 
 	
 	} catch (InvalidPasswordException e) {
                     // TODO Auto-generated catch block
@@ -37,6 +39,7 @@ public class accionesPDF {
                     // TODO Auto-generated catch block
 
             }	
+        return pdfExtraido.getRegistro();
 	}
         
         public String quitarEncabezado(String t){
@@ -60,15 +63,13 @@ public class accionesPDF {
                     }else {
                         textoListo= textoListo+temp +"\n"; 
                     }
-                    }
-            return textoListo; 
+                }
+        return textoListo; 
         }
         
         
         private void pruebaDelimitador (String t,int p) throws IOException{
-            
-            modeloObjetoDatos listaProductos = new modeloObjetoDatos();
-        
+                    
             Scanner elEscaner = new Scanner(t);
             String codigo="";
             String descripcion="";
@@ -116,19 +117,22 @@ public class accionesPDF {
                 precio= (precio.replace(",","."));
                               
                 modeloDatos temp = new modeloDatos(Integer.parseInt(codigo),descripcion, Double.parseDouble(precio),precioPorcentaje);
-
-                listaProductos.setRegistro(temp);
+                
+                pdfExtraido.setRegistro(temp);
                                
                 contador=0;
                 codigo="";
                 descripcion="";
                 precio="";
                 Leido = "";
-	}
-        
-        accionesExcel enviarObjetoDatosAModuloExcel = new accionesExcel();
-        enviarObjetoDatosAModuloExcel.recibirObjetoRecuperadoPDF(listaProductos);
-        enviarObjetoDatosAModuloExcel.crearExcel(p);
-          
-        }      		
+            } 
+        } 
+
+        public void recorrerColeccion (modeloObjetoDatos d){
+            
+            for (modeloDatos e : d.getRegistro()) {
+                System.out.println(e.toString());
+            }
+            
+        }
 }
