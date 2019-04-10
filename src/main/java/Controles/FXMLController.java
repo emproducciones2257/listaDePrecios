@@ -78,10 +78,7 @@ public class FXMLController implements Initializable {
         
         pdfExtraido.setColeccion(p.extraerTextoPdf(rutaSeleccionadaPdf, texto, Integer.parseInt(txtPorcentaje.getText())));
         
-        p.recorrerColeccion(pdfExtraido);
-        
-        System.out.println("Prueba uno");
-        
+        p.recorrerColeccion(pdfExtraido);        
     }
     
     @FXML

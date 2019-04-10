@@ -15,8 +15,8 @@ public class accionesPDF {
     
 	
     public ArrayList<modeloDatos> extraerTextoPdf (File ruta, TextArea area, int p) {
-   	System.out.println("Prueba uno");
-	try {
+
+        try {
             //cargo el documento
             PDDocument documento = PDDocument.load(ruta);
 			
