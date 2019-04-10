@@ -1,6 +1,5 @@
 package Controles;
 
-import emproducciones.aver.accionesExcel;
 import emproducciones.aver.accionesPDF;
 import emproducciones.aver.utilidades;
 import java.io.File;
@@ -80,6 +79,8 @@ public class FXMLController implements Initializable {
         pdfExtraido.setColeccion(p.extraerTextoPdf(rutaSeleccionadaPdf, texto, Integer.parseInt(txtPorcentaje.getText())));
         
         p.recorrerColeccion(pdfExtraido);
+        
+        System.out.println("Prueba uno");
     }
     
     @FXML
