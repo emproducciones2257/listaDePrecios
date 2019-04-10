@@ -14,7 +14,7 @@ public class accionesPDF {
     
     
 	
-    public ArrayList<modeloDatos> extraerTextoPdf (File ruta, TextArea area, int p) {
+    public ArrayList<modeloDatos> extraerTextoPdf (File ruta) {
 
         try {
             //cargo el documento
@@ -29,10 +29,8 @@ public class accionesPDF {
             documento.close();
                         
             String temp = quitarEncabezado(textoRecuperado);
-			
-            area.appendText(temp);
-                        
-            pruebaDelimitador(temp,p); 
+        
+            pruebaDelimitador(temp); 
 	
 	} catch (InvalidPasswordException e) {
                     // TODO Auto-generated catch block
@@ -70,7 +68,7 @@ public class accionesPDF {
         }
         
         
-        private void pruebaDelimitador (String t,int p) throws IOException{
+        private void pruebaDelimitador (String t) throws IOException{
                     
             Scanner elEscaner = new Scanner(t);
             String codigo="";

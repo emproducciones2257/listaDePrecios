@@ -24,7 +24,7 @@ public class FXMLController implements Initializable {
     @FXML
     private Button btnLimpiar;
     @FXML
-    private Button btnMostrar;
+    private Button btnProcesar;
     @FXML
     private TextField areaNombre;
     @FXML
@@ -59,7 +59,7 @@ public class FXMLController implements Initializable {
         if (rutaPdf.getnombreArchivo()!=null){
             rutaSeleccionadaPdf=rutaPdf.getrutaSeleccionada();
             areaNombre.setText(rutaPdf.getnombreArchivo());    
-            btnMostrar.setDisable(false);
+            btnProcesar.setDisable(false);
             btnLimpiar.setDisable(false);
             cosasExcel.setDisable(false);
             cosasExcel.setDisable(false);
@@ -72,19 +72,21 @@ public class FXMLController implements Initializable {
     }
     
     @FXML
-    private void accionMostrar() throws IOException {
+    private void accionProcesar() throws IOException {
         
         accionesPDF p = new accionesPDF();
         
-        pdfExtraido.setColeccion(p.extraerTextoPdf(rutaSeleccionadaPdf, texto, Integer.parseInt(txtPorcentaje.getText())));
+        pdfExtraido.setColeccion(p.extraerTextoPdf(rutaSeleccionadaPdf));
         
-        p.recorrerColeccion(pdfExtraido);        
+        p.recorrerColeccion(pdfExtraido);
+
+        escibirCuadroTexto("Archivo PDF con: " + pdfExtraido.getRegistro().size() +" registros procesados correctamente");
     }
     
     @FXML
     private void accionBorrar (){
     texto.setText("");
-    btnMostrar.setDisable(true);
+    btnProcesar.setDisable(true);
     btnLimpiar.setDisable(true);
     areaNombre.setText("");
     cosasExcel.setDisable(true);

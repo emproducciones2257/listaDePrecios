@@ -13,7 +13,7 @@
    <children>  
       <TextArea fx:id="texto" layoutX="14.0" layoutY="22.0" prefHeight="362.0" prefWidth="302.0" />
       <Button fx:id="btnBuscar" layoutX="327.0" layoutY="79.0" mnemonicParsing="false" onAction="#accionBuscar" text="Buscar Pdf" />
-      <Button fx:id="btnMostrar" disable="true" layoutX="439.0" layoutY="79.0" mnemonicParsing="false" onAction="#accionMostrar" text="Mostrar" />
+      <Button fx:id="btnProcesar" disable="true" layoutX="439.0" layoutY="79.0" mnemonicParsing="false" onAction="#accionProcesar" text="Procesar" />
       <Button fx:id="btnLimpiar" disable="true" layoutX="530.0" layoutY="79.0" mnemonicParsing="false" onAction="#accionBorrar" text="Limpiar" />
       <TextField fx:id="areaNombre" layoutX="397.0" layoutY="37.0" />
       <Label layoutX="327.0" layoutY="41.0" text="Documento:" textFill="WHITE" />
