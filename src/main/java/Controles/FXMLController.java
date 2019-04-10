@@ -81,6 +81,8 @@ public class FXMLController implements Initializable {
         p.recorrerColeccion(pdfExtraido);
         
         System.out.println("Prueba uno");
+        
+        System.out.println("Prueba dos");
     }
     
     @FXML
