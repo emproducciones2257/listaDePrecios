@@ -11,9 +11,11 @@ import modelo.*;
 
 public class accionesPDF {
     modeloObjetoDatos pdfExtraido = new modeloObjetoDatos();
+    
+    
 	
     public ArrayList<modeloDatos> extraerTextoPdf (File ruta, TextArea area, int p) {
-   	
+   	System.out.println("Prueba uno");
 	try {
             //cargo el documento
             PDDocument documento = PDDocument.load(ruta);

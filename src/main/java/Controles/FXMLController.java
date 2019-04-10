@@ -82,7 +82,6 @@ public class FXMLController implements Initializable {
         
         System.out.println("Prueba uno");
         
-        System.out.println("Prueba dos");
     }
     
     @FXML
