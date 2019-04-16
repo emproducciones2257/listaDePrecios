@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,28 +16,15 @@
       <Button fx:id="btnLimpiar" disable="true" layoutX="530.0" layoutY="79.0" mnemonicParsing="false" onAction="#accionBorrar" text="Limpiar" />
       <TextField fx:id="areaNombre" layoutX="397.0" layoutY="37.0" />
       <Label layoutX="327.0" layoutY="41.0" text="Documento:" textFill="WHITE" />
-      <Label layoutX="334.0" layoutY="137.0" text="Porcentaje:" textFill="WHITE" />
-      <TextField fx:id="txtPorcentaje" layoutX="406.0" layoutY="133.0" prefHeight="25.0" prefWidth="36.0" />
       <ImageView fitHeight="33.0" fitWidth="29.0" layoutX="558.0" layoutY="33.0">
          <image>
             <Image url="@../pdf-icono.png" />
          </image>
       </ImageView>
-      <TitledPane fx:id="tPaneE" animated="false" layoutX="327.0" layoutY="233.0" prefHeight="151.0" prefWidth="263.0" text="Excel">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="177.0">
-               <children>
-                  <Button fx:id="cosasExcel" layoutX="14.0" layoutY="86.0" mnemonicParsing="false" onAction="#accionExcel" text="Button" />
-                  <TextField fx:id="areaNombreExcel" layoutX="79.0" layoutY="14.0" prefHeight="25.0" prefWidth="138.0" />
-                  <Label layoutX="9.0" layoutY="18.0" text="Documento" />
-                  <ImageView fitHeight="25.0" fitWidth="29.0" layoutX="231.0" layoutY="14.0">
-                     <image>
-                        <Image url="@../../../../target/classes/Excel.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-        </content>
-      </TitledPane>
+      <Label layoutX="327.0" layoutY="167.0" text="Documento:" textFill="WHITE" />
+      <TextField fx:id="areaNombreExcel" layoutX="399.0" layoutY="163.0" />
+      <Button fx:id="btnBuscarExcel" disable="true" layoutX="327.0" layoutY="221.0" mnemonicParsing="false" onAction="#accionBuscarExcel" text="Buscar Excel" />
+      <Button fx:id="btnProcesarExcel" disable="true" layoutX="439.0" layoutY="221.0" mnemonicParsing="false" onAction="#accionProcesarExcel" text="Procesar" />
+      <Button fx:id="btnLimpiarExcel" disable="true" layoutX="530.0" layoutY="221.0" mnemonicParsing="false" onAction="#accionBorrar" text="Limpiar" />
    </children>
 </AnchorPane>

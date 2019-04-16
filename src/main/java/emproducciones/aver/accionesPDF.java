@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import javafx.scene.control.TextArea;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -127,12 +126,4 @@ public class accionesPDF {
                 Leido = "";
             } 
         } 
-
-        public void recorrerColeccion (modeloObjetoDatos d){
-            
-            for (modeloDatos e : d.getRegistro()) {
-                System.out.println(e.toString());
-            }
-            
-        }
 }

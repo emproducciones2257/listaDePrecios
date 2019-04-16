@@ -7,6 +7,8 @@ package emproducciones.aver;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelo.modeloDatos;
+import modelo.modeloObjetoDatos;
 import modelo.modeloRutaArchivos;
 
 /**
@@ -32,4 +34,10 @@ public class utilidades {
         return archivo;
     }
     
+    public void recorrerColeccion (modeloObjetoDatos d){
+            
+            for (modeloDatos e : d.getRegistro()) {
+                System.out.println(e.toString());
+            }
+        } 
 }

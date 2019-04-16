@@ -1,5 +1,6 @@
 package Controles;
 
+import emproducciones.aver.accionesExcel;
 import emproducciones.aver.accionesPDF;
 import emproducciones.aver.utilidades;
 import java.io.File;
@@ -27,18 +28,17 @@ public class FXMLController implements Initializable {
     private Button btnProcesar;
     @FXML
     private TextField areaNombre;
-    @FXML
-    private Button cosasExcel;
-    @FXML 
-    private TextField txtPorcentaje;
     
     @FXML
-    private TitledPane tPaneE;
+    private Button btnBuscarExcel;
+    @FXML
+    private Button btnLimpiarExcel;
+    @FXML
+    private Button btnProcesarExcel;
     
     @FXML
     private TextField areaNombreExcel;
-    
-    
+
     private File rutaSeleccionadaPdf;
     
     private File rutaSeleccionadaExcel;
@@ -48,6 +48,8 @@ public class FXMLController implements Initializable {
     modeloRutaArchivos rutaExcel = new modeloRutaArchivos();
     
     modeloObjetoDatos pdfExtraido = new modeloObjetoDatos();
+    
+    modeloObjetoDatos excelExtraido = new modeloObjetoDatos();
     
     utilidades utilidad = new utilidades();
     
@@ -59,15 +61,11 @@ public class FXMLController implements Initializable {
         if (rutaPdf.getnombreArchivo()!=null){
             rutaSeleccionadaPdf=rutaPdf.getrutaSeleccionada();
             areaNombre.setText(rutaPdf.getnombreArchivo());    
-            btnProcesar.setDisable(false);
-            btnLimpiar.setDisable(false);
-            cosasExcel.setDisable(false);
-            cosasExcel.setDisable(false);
-            areaNombreExcel.setDisable(false); 
+            cambioEstadoComponente(false);
             escibirCuadroTexto("Se cargo correctamente el archivo PDF");
-            escibirCuadroTexto(" ");
-            escibirCuadroTexto(" ");
-            escibirCuadroTexto("/////////////////////////////////////");
+            escibirCuadroTexto("\r\n");
+            escibirCuadroTexto("//////////////////////////////////");
+            escibirCuadroTexto("\r\n");
         }        
     }
     
@@ -78,39 +76,60 @@ public class FXMLController implements Initializable {
         
         pdfExtraido.setColeccion(p.extraerTextoPdf(rutaSeleccionadaPdf));
         
-        p.recorrerColeccion(pdfExtraido);
+        utilidad.recorrerColeccion(pdfExtraido);
 
-        escibirCuadroTexto("Archivo PDF con: " + pdfExtraido.getRegistro().size() +" registros procesados correctamente");
+        escibirCuadroTexto("Archivo PDF con: " + pdfExtraido.getRegistro().size()+ " registros procesados correctamente");
+       
     }
     
     @FXML
     private void accionBorrar (){
-    texto.setText("");
-    btnProcesar.setDisable(true);
-    btnLimpiar.setDisable(true);
-    areaNombre.setText("");
-    cosasExcel.setDisable(true);
-    areaNombreExcel.setDisable(true);
+        cambioEstadoComponente(true);
+        texto.setText("");
+        areaNombre.setText("");
+        areaNombreExcel.setText("");
     }
 
     @FXML
-    private void accionExcel () throws IOException{
+    private void accionBuscarExcel () throws IOException{
         
         rutaExcel=utilidad.buscarArchivo(new FileNameExtensionFilter("Documento Excel", "xlsx"));
         
         rutaSeleccionadaExcel = rutaExcel.getrutaSeleccionada();
 
         areaNombreExcel.setText(rutaExcel.getnombreArchivo());
+    }
+    
+    @FXML
+    private void accionProcesarExcel() throws IOException {
+        
+        accionesExcel e = new accionesExcel();
+        
+        excelExtraido.setColeccion(e.leerExcel(rutaSeleccionadaExcel));
+        
+        utilidad.recorrerColeccion(pdfExtraido);
+        
+        escibirCuadroTexto("\r\n");
+        escibirCuadroTexto("//////////////////////////////////");
+        escibirCuadroTexto("\r\n");
 
-        //accionesExcel excel = new accionesExcel();
-      
-        //excel.leerExcel();
+        escibirCuadroTexto("Archivo Excel con: " + pdfExtraido.getRegistro().size()+ " registros procesados correctamente");
     }
     
     public void escibirCuadroTexto (String t) {
         
         texto.appendText(t);
         texto.setWrapText(true);
+        
+    }
+    
+    public void cambioEstadoComponente (Boolean e) {
+        btnProcesar.setDisable(e);
+        btnLimpiar.setDisable(e);
+        areaNombreExcel.setDisable(e);
+        btnBuscarExcel.setDisable(e);
+        btnProcesarExcel.setDisable(e);
+        btnLimpiarExcel.setDisable(e);  
     }
    
     @Override
