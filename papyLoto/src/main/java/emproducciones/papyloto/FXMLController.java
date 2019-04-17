@@ -2,21 +2,61 @@ package emproducciones.papyloto;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import modelo.jugadasPapiLoto;
+import modelo.loto;
+
 
 public class FXMLController implements Initializable {
+    @FXML
+    private Button btnCarga;
     
     @FXML
-    private Label label;
+    private Button btnSortear;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private TextField txtNumA;
+    
+    @FXML
+    private TextField txtNumB;
+    
+    @FXML
+    private TextField txtNumC;
+    
+    @FXML
+    private TextField txtNombre;
+    
+    private jugadasPapiLoto jugadas = new jugadasPapiLoto();
+    
+    @FXML
+    public void cargarPapis() {
+        byte tempA = Byte.parseByte(txtNumA.getText());
+        byte tempB = Byte.parseByte(txtNumB.getText());
+        byte tempC = Byte.parseByte(txtNumC.getText());
+        String temNom = txtNombre.getText();
+        jugadas.getJugada(new loto(tempA,tempB, tempC, temNom, Boolean.TRUE));
+        limpiarComponenetes();
+
     }
+    
+    @FXML
+    public void mostrarRegistro (){
+        
+        jugadas.recorrerColeccion(jugadas);
+        limpiarComponenetes();  
+    }
+    
+    private void limpiarComponenetes () {
+        txtNombre.setText("");
+        txtNumA.setText("");
+        txtNumB.setText("");
+        txtNumC.setText("");
+    }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
