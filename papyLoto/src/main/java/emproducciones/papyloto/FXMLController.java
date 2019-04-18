@@ -30,7 +30,7 @@ public class FXMLController implements Initializable {
     @FXML
     private TextField txtNombre;
     
-    private jugadasPapiLoto jugadas = new jugadasPapiLoto();
+    private final jugadasPapiLoto jugadas = new jugadasPapiLoto();
     
     @FXML
     public void cargarPapis() {

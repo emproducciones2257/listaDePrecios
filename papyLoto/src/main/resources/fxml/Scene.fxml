@@ -14,6 +14,6 @@
       <TextField fx:id="txtNumA" layoutX="61.0" layoutY="125.0" prefHeight="25.0" prefWidth="63.0" />
       <TextField fx:id="txtNumB" layoutX="184.0" layoutY="125.0" prefHeight="25.0" prefWidth="63.0" />
       <TextField fx:id="txtNumC" layoutX="292.0" layoutY="125.0" prefHeight="25.0" prefWidth="63.0" />
-      <Button fx:id="btnSortear" layoutX="303.0" layoutY="222.0" mnemonicParsing="false" onAction="#mostrarRegistro" text="sortear" />
+      <Button fx:id="btnSortear" layoutX="303.0" layoutY="222.0" mnemonicParsing="false" onAction="#mostrarRegistro" text="Mostrar" />
     </children>
 </AnchorPane>
