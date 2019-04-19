@@ -106,7 +106,7 @@ public class accionesExcel {
         return excelExtraido.getRegistro();
     }
   
-    /*public void crearExcel (int porcentaje) throws FileNotFoundException, IOException{
+    public void crearExcel (int porcentaje, ArrayList<modeloDatos> registro) throws FileNotFoundException, IOException{
     
         XSSFWorkbook libro = new XSSFWorkbook(); 
 
@@ -133,11 +133,11 @@ public class accionesExcel {
             cell4.setCellValue(tempRegitro.getPrecio()+temp);  
         }
 
-        FileOutputStream out = new FileOutputStream(new File("temporal a ver.xlsx"));
+        FileOutputStream out = new FileOutputStream(new File("Lista de precios.xlsx"));
         libro.write(out);
         out.close();
         System.out.println("Archivo creado correctamente");
-   }*/
+   }
  }
     
    

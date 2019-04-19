@@ -7,9 +7,14 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.modeloObjetoDatos;
 import modelo.modeloRutaArchivos;
@@ -19,9 +24,7 @@ public class FXMLController implements Initializable {
 
     @FXML
     private TextArea texto;
-   
-    @FXML
-    private Button btnBuscar;
+ 
     @FXML
     private Button btnLimpiar;
     @FXML
@@ -38,6 +41,14 @@ public class FXMLController implements Initializable {
     
     @FXML
     private TextField areaNombreExcel;
+    
+    @FXML
+    private Button btnGenerarExcelNuevo;
+    @FXML
+    private Button btnActualizar;
+    
+    @FXML
+    private TextField areaPorcentaje;
 
     private File rutaSeleccionadaPdf;
     
@@ -52,6 +63,8 @@ public class FXMLController implements Initializable {
     modeloObjetoDatos excelExtraido = new modeloObjetoDatos();
     
     utilidades utilidad = new utilidades();
+    
+    accionesExcel cosasExcel = new accionesExcel();
     
     @FXML
     private void accionBuscar (){
@@ -116,11 +129,29 @@ public class FXMLController implements Initializable {
         escibirCuadroTexto("Archivo Excel con: " + pdfExtraido.getRegistro().size()+ " registros procesados correctamente");
     }
     
+    @FXML
+    private void generarExcelNuevo () throws IOException{
+        
+        byte temp;
+        
+        cosasExcel.crearExcel(Integer.parseInt(areaPorcentaje.getText()), pdfExtraido.getRegistro());
+    }
+    
     public void escibirCuadroTexto (String t) {
         
         texto.appendText(t);
         texto.setWrapText(true);
         
+    }
+    @FXML
+    private void verificarNumeros (){
+       String nombre=areaPorcentaje.getText();
+        Pattern pat = Pattern.compile("[a-zA-Z]");
+        Matcher mat = pat.matcher(nombre);
+        if (mat.find()) {
+            JOptionPane.showMessageDialog(null, "Solo se permiten numeros!");
+            areaPorcentaje.clear();
+        }      
     }
     
     public void cambioEstadoComponente (Boolean e) {
@@ -129,7 +160,9 @@ public class FXMLController implements Initializable {
         areaNombreExcel.setDisable(e);
         btnBuscarExcel.setDisable(e);
         btnProcesarExcel.setDisable(e);
-        btnLimpiarExcel.setDisable(e);  
+        btnLimpiarExcel.setDisable(e); 
+        btnGenerarExcelNuevo.setDisable(e);
+        btnActualizar.setDisable(e);
     }
    
     @Override
