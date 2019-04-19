@@ -151,6 +151,7 @@ public class FXMLController implements Initializable {
         if (mat.find()) {
             JOptionPane.showMessageDialog(null, "Solo se permiten numeros!");
             areaPorcentaje.clear();
+            //no hace nada
         }      
     }
     
